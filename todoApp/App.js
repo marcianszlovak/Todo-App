@@ -5,7 +5,8 @@ import {
   View,
   FlatList,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Alert
 } from "react-native";
 import { Header } from "./components/header";
 import { todoItem } from "./components/listitems";
@@ -19,7 +20,7 @@ export default function App() {
     { text: "don't do that", key: "3" }
   ]);
 
-  const pressButton = key => {
+  const pressHandler = key => {
     setTodos(prevTodos => {
       return prevTodos.filter(todo => todo.key != key);
     });
@@ -30,8 +31,12 @@ export default function App() {
       setTodos(prevTodos => {
         return [{ text: text, key: Math.random().toString() }, ...prevTodos];
       });
-    }
-  };
+    
+  } else {
+    Alert.alert("Todos must be over 3 characters long.", [{
+      text: "Understood", onPress: () => console.log("alert closed")
+    }])
+  }
 
   return (
     <TouchableWithoutFeedback
