@@ -10,6 +10,12 @@ export default function App() {
     { text: "don't do that", key: "3" }
   ]);
 
+  const pressButton = key => {
+    setTodos(prevTodos => {
+      return prevTodos.filter(todo => todo.key != key);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Header />
