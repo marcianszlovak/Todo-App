@@ -1,32 +1,34 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, View, TextInput, Button } from "react-native";
 
-export default function addToList({ submitHandler }) {
-  const [text, setText] = useState(""); // keeps track of what the user types into the input field
-  const changeHandler = value => {
-    setText(value);
+export default function AddTolist({ submitHandler }) {
+  [text, setText] = useState("");
+
+  const changeHandler = val => {
+    setText(val);
+  };
+
+  const pressHandler = () => {
+    submitHandler(text);
+    setText("");
   };
 
   return (
     <View>
       <TextInput
         style={styles.input}
-        placeholder="new item..."
+        placeholder="add a new item..."
         onChangeText={changeHandler}
+        value={text}
       />
-      <Button
-        onPress
-        {...() => submitHandler(text)}
-        title="add item"
-        color="coral"
-      />
+      <Button color="coral" onPress={pressHandler} title="add todo" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   input: {
-    marginBottom: 12,
+    marginBottom: 10,
     paddingHorizontal: 8,
     paddingVertical: 6,
     borderBottomWidth: 1,
