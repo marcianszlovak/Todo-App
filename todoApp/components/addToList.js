@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, Button, View } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
 export default function addToList() {
   const [text, setText] = useState(""); //keeps track of what the user types into the input field
