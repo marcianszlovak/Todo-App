@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import { Header } from "components/header";
+import { Header } from "./components/header";
+import { todoItem } from "./components/listitems";
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -17,7 +18,7 @@ export default function App() {
         <View style={styles.list}></View>
         <FlatList
           data={todos}
-          renderItem={({ item }) => <Text>{item.text}</Text>}
+          renderItem={({ item }) => <todoItem item={item} />}
         />
       </View>
     </View>
