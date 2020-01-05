@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableWithoutFeedback,
+  Keyboard
+} from "react-native";
 import { Header } from "./components/header";
 import { todoItem } from "./components/listitems";
 import { addToList } from "./components/addToList";
@@ -25,19 +32,26 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>
-        <addToList submitHandler={submitHandler} />
-        <View style={styles.list}></View>
-        <FlatList
-          data={todos}
-          renderItem={({ item }) => (
-            <todoItem item={item} pressHandler={pressHandler} />
-          )}
-        />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.content}>
+          <addToList submitHandler={submitHandler} />
+          <View style={styles.list}>
+            <FlatList
+              data={todos}
+              renderItem={({ item }) => (
+                <todoItem item={item} pressHandler={pressHandler} />
+              )}
+            />
+          </View>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -49,9 +63,11 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   content: {
-    padding: 40
+    padding: 40,
+    flex: 1
   },
   list: {
-    marginTop: 20
+    marginTop: 20,
+    flex: 1
   }
 });
