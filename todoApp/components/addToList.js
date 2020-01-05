@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
-export default function addToList() {
-  const [text, setText] = useState(""); //keeps track of what the user types into the input field
+export default function addToList({ submitHandler }) {
+  const [text, setText] = useState(""); // keeps track of what the user types into the input field
   const changeHandler = value => {
     setText(value);
   };
@@ -13,6 +13,12 @@ export default function addToList() {
         style={styles.input}
         placeholder="new item..."
         onChangeText={changeHandler}
+      />
+      <Button
+        onPress
+        {...() => submitHandler(text)}
+        title="add item"
+        color="coral"
       />
     </View>
   );
