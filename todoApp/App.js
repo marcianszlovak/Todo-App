@@ -31,50 +31,53 @@ export default function App() {
       setTodos(prevTodos => {
         return [{ text: text, key: Math.random().toString() }, ...prevTodos];
       });
-    
-  } else {
-    Alert.alert("Todos must be over 3 characters long.", [{
-      text: "Understood", onPress: () => console.log("alert closed")
-    }])
-  }
+    } else {
+      Alert.alert("Todos must be over 3 characters long.", [
+        {
+          text: "Understood",
+          onPress: () => console.log("alert closed")
+        }
+      ]);
+    }
 
-  return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}
-    >
-      <View style={styles.container}>
-        <Header />
-        <View style={styles.content}>
-          <addToList submitHandler={submitHandler} />
-          <View style={styles.list}>
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <todoItem item={item} pressHandler={pressHandler} />
-              )}
-            />
+    return (
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
+        <View style={styles.container}>
+          <Header />
+          <View style={styles.content}>
+            <addToList submitHandler={submitHandler} />
+            <View style={styles.list}>
+              <FlatList
+                data={todos}
+                renderItem={({ item }) => (
+                  <todoItem item={item} pressHandler={pressHandler} />
+                )}
+              />
+            </View>
           </View>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
-  );
-}
+      </TouchableWithoutFeedback>
+    );
+  };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  content: {
-    padding: 40,
-    flex: 1
-  },
-  list: {
-    marginTop: 20,
-    flex: 1
-  }
-});
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "#fff",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    content: {
+      padding: 40,
+      flex: 1
+    },
+    list: {
+      marginTop: 20,
+      flex: 1
+    }
+  });
+}
