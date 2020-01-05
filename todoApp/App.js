@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   FlatList,
+  Alert,
   TouchableWithoutFeedback,
-  Keyboard,
-  Alert
+  Keyboard
 } from "react-native";
-import { Header } from "./components/header";
-import { todoItem } from "./components/listitems";
-import { addToList } from "./components/addToList";
-import { sandBox } from "./components/sandbox";
+import Header from "./components/header";
+import ItemList from "./components/listItems";
+import AddTolist from "./components/addTolist";
 
 export default function App() {
   const [todos, setTodos] = useState([
     { text: "do something", key: "1" },
     { text: "do something else", key: "2" },
-    { text: "don't do that", key: "3" }
+    { text: "don't do this", key: "3" }
   ]);
 
   const pressHandler = key => {
@@ -28,31 +26,35 @@ export default function App() {
 
   const submitHandler = text => {
     if (text.length > 3) {
-      setText("");
       setTodos(prevTodos => {
         return [{ text, key: Math.random().toString() }, ...prevTodos];
       });
     } else {
-      Alert.alert("Todos must be over 3 characters long.", [
-        {
-          text: "Understood",
-          onPress: () => console.log("alert closed")
-        }
-      ]);
+      Alert.alert(
+        "Please enter more than 3 characters",
+        "Do not fear the shrouded path"[
+          { text: "Understood", onPress: () => console.log("alert closed") }
+        ]
+      );
     }
   };
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+        console.log("dismissed");
+      }}
+    >
       <View style={styles.container}>
         <Header />
         <View style={styles.content}>
-          <AddTodo submitHandler={submitHandler} />
+          <AddTolist submitHandler={submitHandler} />
           <View style={styles.list}>
             <FlatList
               data={todos}
               renderItem={({ item }) => (
-                <TodoItem item={item} pressHandler={pressHandler} />
+                <ItemList item={item} pressHandler={pressHandler} />
               )}
             />
           </View>
@@ -65,9 +67,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: "#fff"
   },
   content: {
     padding: 40,
