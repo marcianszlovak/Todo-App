@@ -8,15 +8,19 @@ export default function App() {
     { text: "don't do that", key: "3" }
   ]);
 
-  return;
-  <View style={styles.container}>
-    {/* header */}
-    <View style={styles.content}>
-      {/* to do form */}
-      <View style={styles.list}></View>
-      <FlatList />
+  return (
+    <View style={styles.container}>
+      {/* header */}
+      <View style={styles.content}>
+        {/* to do form */}
+        <View style={styles.list}></View>
+        <FlatList
+          data={todos}
+          renderItem={({ item }) => <Text>{item.text}</Text>}
+        />
+      </View>
     </View>
-  </View>;
+  );
 }
 
 const styles = StyleSheet.create({
@@ -25,5 +29,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  content: {
+    padding: 40
+  },
+  list: {
+    marginTop: 20
   }
 });
