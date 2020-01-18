@@ -5,11 +5,13 @@ import {
   FlatList,
   Alert,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  ImageBackground
 } from "react-native";
 import Header from "./components/header";
 import ItemList from "./components/listItems";
 import AddTolist from "./components/addTolist";
+import { Background } from "./components/background.js";
 
 export default function App() {
   const [todos, setTodos] = useState([
