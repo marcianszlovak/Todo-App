@@ -6,12 +6,13 @@ import {
   Alert,
   TouchableWithoutFeedback,
   Keyboard,
-  ImageBackground
+  ImageBackground,
+  Button
 } from "react-native";
 import Header from "./components/header";
 import ItemList from "./components/listItems";
 import AddTolist from "./components/addTolist";
-import { Background } from "./components/background.js";
+import BackgroundImage from "./components/background.js";
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -40,6 +41,17 @@ export default function App() {
       );
     }
   };
+
+  <BackgroundImage
+    imageSource={require("./assets/shoppinglistbackground.jpg")}
+    opacity={0.8}
+  >
+    <Text>Using Custom Background Image</Text>
+    <Button
+      onPress={() => this.props.navigation.navigate("Another")}
+      title="Go to React Native Background"
+    />
+  </BackgroundImage>;
 
   return (
     <TouchableWithoutFeedback
