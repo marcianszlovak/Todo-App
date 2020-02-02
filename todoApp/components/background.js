@@ -1,4 +1,4 @@
-import React, { Component } from "React";
+import React, { Component } from "react";
 import { View, Image, StyleSheet } from "react-native";
 
 export default class BackgroundImage extends Component {
@@ -22,9 +22,9 @@ class StyleSheetFactory {
       bgImage: {
         flex: 1,
         position: "absolute",
-        zIndex: 0,
-        width: "100%",
-        height: "100%",
+        // zIndex: 0,
+        // width: "480",
+        // height: "800",
         opacity
       }
     });

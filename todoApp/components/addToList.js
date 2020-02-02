@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button } from "react-native";
 
-export default function AddTolist({ submitHandler }) {
+export default function AddToList({ submitHandler }) {
   [text, setText] = useState("");
 
   const changeHandler = val => {

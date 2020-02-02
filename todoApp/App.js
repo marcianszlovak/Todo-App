@@ -7,11 +7,12 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ImageBackground,
-  Button
+  Button,
+  Text
 } from "react-native";
 import Header from "./components/header";
 import ItemList from "./components/listItems";
-import AddTolist from "./components/addTolist";
+import AddToList from "./components/AddToList";
 import BackgroundImage from "./components/background.js";
 
 export default function App() {
@@ -42,17 +43,6 @@ export default function App() {
     }
   };
 
-  <BackgroundImage
-    imageSource={require("./assets/shoppinglistbackground.jpg")}
-    opacity={0.8}
-  >
-    <Text>Using Custom Background Image</Text>
-    <Button
-      onPress={() => this.props.navigation.navigate("Another")}
-      title="Go to React Native Background"
-    />
-  </BackgroundImage>;
-
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -63,7 +53,7 @@ export default function App() {
       <View style={styles.container}>
         <Header />
         <View style={styles.content}>
-          <AddTolist submitHandler={submitHandler} />
+          <AddToList submitHandler={submitHandler} />
           <View style={styles.list}>
             <FlatList
               data={todos}
@@ -90,5 +80,11 @@ const styles = StyleSheet.create({
   list: {
     marginTop: 20,
     flex: 1
+  },
+
+  ImageBackground: {
+    ...StyleSheet.absoluteFillObject,
+    alignSelf: "center",
+    backgroundColor: "transparent"
   }
 });
