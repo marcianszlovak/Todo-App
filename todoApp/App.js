@@ -50,7 +50,10 @@ export default function App() {
         console.log("dismissed");
       }}
     >
-      <View style={styles.container}>
+      <ImageBackground
+        source={require("./assets/shoppinglistbackground.jpg")}
+        style={styles.container}
+      >
         <Header />
         <View style={styles.content}>
           <AddToList submitHandler={submitHandler} />
@@ -63,7 +66,7 @@ export default function App() {
             />
           </View>
         </View>
-      </View>
+      </ImageBackground>
     </TouchableWithoutFeedback>
   );
 }
@@ -71,7 +74,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    ...StyleSheet.absoluteFillObject,
+    alignSelf: "center",
+    backgroundColor: "transparent"
   },
   content: {
     padding: 40,
@@ -80,11 +85,5 @@ const styles = StyleSheet.create({
   list: {
     marginTop: 20,
     flex: 1
-  },
-
-  ImageBackground: {
-    ...StyleSheet.absoluteFillObject,
-    alignSelf: "center",
-    backgroundColor: "transparent"
   }
 });
